@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="nLogoBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="nLogoGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="nLogoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#2563eb" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#090d16" />
+  <rect x="4" y="4" width="504" height="504" rx="108" fill="none" stroke="#1e293b" stroke-width="8" />
+
+  <!-- Outer Tech Aura -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#38bdf8" stroke-width="4" opacity="0.15" stroke-dasharray="40 30" />
+
+  <!-- Visible Bold 'N' with 'i' at its tail -->
+  <g filter="url(#nLogoGlow)" transform="translate(0, 0)">
+    <!-- Left vertical pillar of N -->
+    <rect x="92" y="122" width="66" height="268" rx="20" fill="url(#nLogoBlue)" />
+
+    <!-- Diagonal stroke of N -->
+    <path
+      d="M102 128 L282 354 L282 390 L226 390 L92 216 Z"
+      fill="url(#nLogoBlue)"
+    />
+
+    <!-- Right upright of N flowing into the tail 'i' -->
+    <path
+      d="M230 122 L297 122 L297 287 C297 338 333 369 379 369 C399 369 420 359 435 344 L435 385 C415 400 389 405 364 405 C292 405 251 364 251 292 Z"
+      fill="url(#nLogoBlue)"
+    />
+
+    <!-- Glowing dot of the 'i' at the tail -->
+    <circle cx="394" cy="194" r="38" fill="url(#nLogoGreen)" />
+    <circle cx="394" cy="194" r="15" fill="#ffffff" opacity="0.85" />
+  </g>
+</svg>
