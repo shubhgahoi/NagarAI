@@ -1,0 +1,8 @@
+{
+  "name": "Remix NAGAR-AI: Smart Rewa Civic Intelligence",
+  "description": "AI-Driven Urban Governance \u0026 Predictive Municipal Infrastructure Platform for Smart Rewa, Madhya Pradesh",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAGAR-AI: Smart Rewa Civic Intelligence</title>
+    <meta name="description" content="AI-Driven Urban Governance & Predictive Municipal Infrastructure Platform for Smart Rewa, Madhya Pradesh" />
+    <meta property="og:title" content="NAGAR-AI: Smart Rewa Civic Intelligence" />
+    <meta property="og:description" content="AI-Driven Urban Governance & Predictive Municipal Infrastructure Platform for Smart Rewa, Madhya Pradesh" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="NagarAI" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="shortcut icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        // Intercept Vite HMR WebSocket in AI Studio iframe environment to prevent "closed without opened" rejection
+        var OrigWS = window.WebSocket;
+        if (OrigWS) {
+          window.WebSocket = function(url, protocols) {
+            var ws = new OrigWS(url, protocols);
+            if (protocols === 'vite-hmr' || (typeof url === 'string' && (url.indexOf('vite-hmr') !== -1 || url.indexOf('token=') !== -1))) {
+              var origAdd = ws.addEventListener.bind(ws);
+              ws.addEventListener = function(type, listener, options) {
+                if (type === 'close') {
+                  return origAdd(type, function(evt) {
+                    if (ws.readyState === 1 || ws.__wasOpened) {
+                      listener(evt);
+                    }
+                  }, options);
+                }
+                if (type === 'open') {
+                  return origAdd(type, function(evt) {
+                    ws.__wasOpened = true;
+                    listener(evt);
+                  }, options);
+                }
+                return origAdd(type, listener, options);
+              };
+            }
+            return ws;
+          };
+          window.WebSocket.prototype = OrigWS.prototype;
+          window.WebSocket.CONNECTING = OrigWS.CONNECTING;
+          window.WebSocket.OPEN = OrigWS.OPEN;
+          window.WebSocket.CLOSING = OrigWS.CLOSING;
+          window.WebSocket.CLOSED = OrigWS.CLOSED;
+        }
+
+        // Catch unhandled rejection and error events for any WebSocket disconnect
+        window.addEventListener('unhandledrejection', function(e) {
+          var msg = (e && e.reason && (e.reason.message || String(e.reason))) || '';
+          if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('closed without opened') !== -1) {
+            e.preventDefault();
+            e.stopPropagation && e.stopPropagation();
+            e.stopImmediatePropagation && e.stopImmediatePropagation();
+          }
+        }, true);
+
+        window.addEventListener('error', function(e) {
+          var msg = (e && (e.message || String(e.error))) || '';
+          if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('closed without opened') !== -1) {
+            e.preventDefault();
+            e.stopPropagation && e.stopPropagation();
+            e.stopImmediatePropagation && e.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
