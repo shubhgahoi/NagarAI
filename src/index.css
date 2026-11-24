@@ -1,0 +1,439 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fbf5e6;
+    color: #231f17;
+  }
+  .dark body {
+    background-color: #000000;
+    color: #f3f4f6;
+  }
+}
+
+/* ==========================================================================
+   POLISHED PASTEL GLASSMORPHISM & PALE YELLOW LIGHT THEME (NAGAR-AI CIVIC SUITE)
+   ========================================================================== */
+
+/* In light mode, map default white / off-white container utilities to warm pale yellow surfaces */
+:root:not(.dark) .bg-white {
+  background-color: #fdfaf0;
+}
+:root:not(.dark) .bg-slate-50,
+:root:not(.dark) .bg-stone-50 {
+  background-color: #f6edd4;
+}
+:root:not(.dark) .bg-slate-100,
+:root:not(.dark) .bg-stone-100 {
+  background-color: #f1e4c3;
+}
+:root:not(.dark) .bg-white\/90 {
+  background-color: rgba(253, 250, 240, 0.92);
+}
+:root:not(.dark) .bg-white\/80 {
+  background-color: rgba(253, 250, 240, 0.85);
+}
+:root:not(.dark) .bg-white\/70 {
+  background-color: rgba(253, 250, 240, 0.75);
+}
+:root:not(.dark) .bg-white\/50 {
+  background-color: rgba(253, 250, 240, 0.55);
+}
+:root:not(.dark) .bg-white\/20 {
+  background-color: rgba(253, 250, 240, 0.25);
+}
+:root:not(.dark) .bg-white\/10 {
+  background-color: rgba(253, 250, 240, 0.15);
+}
+:root:not(.dark) .border-stone-200,
+:root:not(.dark) .border-slate-200 {
+  border-color: #ebdcb9;
+}
+
+/* In dark mode, replace all dark blue, dark navy, and dark slate surfaces with pitch black */
+.dark .bg-slate-900,
+.dark .bg-slate-950,
+.dark .bg-gray-900,
+.dark .bg-gray-950,
+.dark .bg-zinc-900,
+.dark .bg-zinc-950,
+.dark .bg-blue-950,
+.dark .bg-indigo-950 {
+  background-color: #000000 !important;
+}
+
+.dark .bg-slate-900\/95,
+.dark .bg-slate-950\/95,
+.dark .bg-blue-950\/95,
+.dark .bg-slate-900\/90,
+.dark .bg-slate-900\/80 {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+.dark .bg-slate-800 {
+  background-color: #080808 !important;
+}
+
+.dark .bg-slate-800\/80,
+.dark .bg-slate-800\/70,
+.dark .bg-slate-800\/60,
+.dark .bg-slate-800\/50 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.dark .bg-blue-950\/40,
+.dark .bg-blue-950\/50,
+.dark .bg-blue-950\/60,
+.dark .bg-blue-950\/70 {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.dark .bg-blue-900,
+.dark .bg-indigo-900 {
+  background-color: #0c0c0c !important;
+}
+
+.dark .border-slate-800,
+.dark .border-slate-900,
+.dark .border-blue-900,
+.dark .border-indigo-900 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Glass Panel: primary elevated surface (navbars, drawers, major containers) */
+.glass-panel {
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background-color: rgba(254, 250, 238, 0.94);
+  border: 1px solid rgba(228, 216, 188, 0.85);
+  box-shadow: 
+    0 4px 20px -2px rgba(135, 120, 85, 0.06),
+    inset 0 1px 1px 0 rgba(255, 255, 250, 0.95);
+}
+.dark .glass-panel {
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Card: content tiles, KPI modules, lists, dialogs */
+.glass-card {
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  background-color: #fdfaf0;
+  border: 1px solid #ebdcb9;
+  box-shadow: 
+    0 2px 10px -1px rgba(130, 115, 80, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .glass-card {
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 4px 16px -2px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-hover:hover {
+  background-color: #fffef7;
+  border-color: #c9bca0;
+  box-shadow: 
+    0 12px 28px -4px rgba(120, 110, 80, 0.12),
+    0 0 0 1px rgba(180, 160, 110, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+.dark .glass-card-hover:hover {
+  background-color: #080808;
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 
+    0 12px 30px -4px rgba(0, 0, 0, 0.8),
+    0 0 20px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Glass Form Inputs & Controls */
+.glass-input {
+  background-color: #fffef8;
+  border: 1px solid #e0d4b8;
+  color: #231f17;
+  transition: all 0.18s ease-in-out;
+}
+.glass-input:focus {
+  background-color: #fffef9;
+  border-color: #638c75;
+  box-shadow: 0 0 0 3px rgba(99, 140, 117, 0.18);
+  outline: none;
+}
+.dark .glass-input {
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f3f4f6;
+}
+.dark .glass-input:focus {
+  background-color: #050505;
+  border-color: #8da399;
+  box-shadow: 0 0 0 3px rgba(141, 163, 153, 0.25);
+  outline: none;
+}
+
+/* Glass Buttons */
+.glass-button {
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  background-color: #fdf9ee;
+  border: 1px solid #e2d6b9;
+  box-shadow: 0 2px 6px 0 rgba(110, 95, 60, 0.04);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-button:hover {
+  background-color: #f5eed8;
+  border-color: #d4c5a0;
+  box-shadow: 0 4px 12px 0 rgba(110, 95, 60, 0.08);
+  transform: translateY(-1px);
+}
+.glass-button:active {
+  transform: scale(0.98);
+}
+.dark .glass-button {
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+}
+.dark .glass-button:hover {
+  background-color: #0d0d0d;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+.dark .glass-button:active {
+  transform: scale(0.98);
+}
+
+/* Glass Pill/Chip */
+.glass-pill {
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  background-color: rgba(254, 250, 238, 0.9);
+  border: 1px solid rgba(228, 216, 188, 0.85);
+}
+.dark .glass-pill {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Ambient Luminous Pastel Glow Orbs */
+.glass-aura-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glass-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  opacity: 0.55;
+  will-change: transform;
+  animation: glass-orb-float 26s ease-in-out infinite alternate;
+}
+.dark .glass-orb {
+  opacity: 0.28;
+  filter: blur(110px);
+}
+
+/* Pastel Sage Orb */
+.glass-orb-sage {
+  width: 520px;
+  height: 520px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(141, 163, 153, 0.35) 0%, rgba(100, 130, 115, 0.08) 60%, transparent 80%);
+}
+.dark .glass-orb-sage {
+  background: radial-gradient(circle, rgba(120, 150, 135, 0.25) 0%, rgba(50, 80, 65, 0.06) 65%, transparent 80%);
+}
+
+/* Pastel Peach / Apricot Orb */
+.glass-orb-peach {
+  width: 560px;
+  height: 560px;
+  top: 18%;
+  right: -120px;
+  background: radial-gradient(circle, rgba(242, 175, 140, 0.3) 0%, rgba(220, 140, 100, 0.06) 60%, transparent 80%);
+  animation-duration: 30s;
+  animation-delay: -6s;
+}
+.dark .glass-orb-peach {
+  background: radial-gradient(circle, rgba(210, 140, 110, 0.2) 0%, rgba(140, 75, 50, 0.05) 65%, transparent 80%);
+}
+
+/* Pastel Lavender Orb */
+.glass-orb-lavender {
+  width: 460px;
+  height: 460px;
+  bottom: 12%;
+  left: 8%;
+  background: radial-gradient(circle, rgba(185, 175, 215, 0.28) 0%, rgba(145, 130, 185, 0.06) 60%, transparent 80%);
+  animation-duration: 25s;
+  animation-delay: -12s;
+}
+.dark .glass-orb-lavender {
+  background: radial-gradient(circle, rgba(150, 135, 185, 0.2) 0%, rgba(95, 80, 130, 0.05) 65%, transparent 80%);
+}
+
+/* Pastel Warm Buttercup / Pale Yellow Orb */
+.glass-orb-sand {
+  width: 500px;
+  height: 500px;
+  bottom: -80px;
+  right: 12%;
+  background: radial-gradient(circle, rgba(247, 226, 160, 0.36) 0%, rgba(235, 210, 135, 0.08) 60%, transparent 80%);
+  animation-duration: 28s;
+  animation-delay: -18s;
+}
+.dark .glass-orb-sand {
+  background: radial-gradient(circle, rgba(180, 155, 120, 0.18) 0%, rgba(110, 90, 60, 0.05) 65%, transparent 80%);
+}
+
+@keyframes glass-orb-float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 30px) scale(1.06);
+  }
+  100% {
+    transform: translate(-30px, 45px) scale(0.95);
+  }
+}
+
+/* Subtle Civic Grid Pattern for Clean Grounding */
+.bg-civic-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(120, 115, 105, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 115, 105, 0.035) 1px, transparent 1px);
+}
+.dark .bg-civic-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-radial-civic {
+  background: radial-gradient(circle at 50% 0%, rgba(141, 163, 153, 0.12) 0%, transparent 70%);
+}
+.dark .bg-radial-civic {
+  background: radial-gradient(circle at 50% 0%, rgba(120, 150, 135, 0.15) 0%, transparent 70%);
+}
+
+/* Custom frosted scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(160, 150, 140, 0.3);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 150, 140, 0.5);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Leaflet Map overrides for GovTech UI */
+.leaflet-container {
+  font-family: inherit;
+  z-index: 10;
+  border-radius: 1.5rem;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 18px !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 20px 30px -5px rgba(28, 25, 23, 0.18), 0 8px 10px -6px rgba(28, 25, 23, 0.1) !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(220, 215, 205, 0.8) !important;
+}
+.dark .leaflet-popup-content-wrapper {
+  background-color: rgba(19, 25, 34, 0.94) !important;
+  color: #f3f4f6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  line-height: 1.4 !important;
+}
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.94) !important;
+}
+.dark .leaflet-popup-tip {
+  background: rgba(19, 25, 34, 0.94) !important;
+}
+
+/* Smooth voice wave animation with pastel gradient */
+@keyframes wave-bar {
+  0%, 100% {
+    height: 8px;
+  }
+  50% {
+    height: 26px;
+  }
+}
+
+.animate-wave-1 { animation: wave-bar 0.9s ease-in-out infinite; }
+.animate-wave-2 { animation: wave-bar 0.7s ease-in-out 0.2s infinite; }
+.animate-wave-3 { animation: wave-bar 1.1s ease-in-out 0.4s infinite; }
+.animate-wave-4 { animation: wave-bar 0.8s ease-in-out 0.1s infinite; }
+.animate-wave-5 { animation: wave-bar 1.0s ease-in-out 0.3s infinite; }
+
+/* Print & PDF Export Formatting */
+@media print {
+  .no-print,
+  nav,
+  header,
+  aside,
+  footer,
+  #bottom-bar,
+  .toast-container,
+  .glass-aura-bg {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  #printable-whitepaper {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
